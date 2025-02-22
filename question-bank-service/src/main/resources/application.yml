@@ -1,0 +1,20 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /api/v1/questions
+
+spring:
+  application:
+    name: question-bank-service
+  datasource:
+    url: "jdbc:mysql://localhost:3306/question_bank_service"
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  servlet:
+    multiple:
+      enabled: true
