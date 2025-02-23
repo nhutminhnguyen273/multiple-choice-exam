@@ -41,4 +41,9 @@ public class CourseController {
     public Response<Void> deleteCourse(@PathVariable("courseId") String courseId) {
         return courseService.deleteCourse(courseId);
     }
+
+    @PutMapping("/deleted/{courseId}")
+    public Response<CourseDTO> deletedCourse(@PathVariable("courseId") String courseId) {
+        return courseService.deletedCourse(courseId);
+    }
 }

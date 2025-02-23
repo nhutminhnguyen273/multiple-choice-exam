@@ -145,4 +145,26 @@ public class CourseService {
             );
         }
     }
+
+    public Response<CourseDTO> deletedCourse(String courseId) {
+        try {
+            Course course = courseRepository.findById(courseId).orElseThrow(
+                    () -> new NotFoundException("Không tìm thấy môn học")
+            );
+            course.setDeleted(true);
+            courseRepository.save(course);
+            CourseDTO courseDTO = courseMapper.toCourseDTO(course);
+            return new Response<>("Success", courseDTO);
+        } catch (NotFoundException ex) {
+            return new Response<>(
+                    404,
+                    ex.getMessage()
+            );
+        } catch (Exception ex) {
+            return new Response<>(
+                    500,
+                    ex.getMessage()
+            );
+        }
+    }
 }
